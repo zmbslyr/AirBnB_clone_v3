@@ -5,6 +5,17 @@ from flask import jsonify, Flask, Blueprint
 from models import storage
 
 
+
+clsDict = {
+	"Amenity": "amenities",
+	"City": "cities",
+	"Place": "places",
+	"Review": "reviews",
+	"State": "states",
+	"User": "users"
+}
+
+
 @app_views.route('/status', strict_slashes=False)
 def status():
     """Returns a JSON status"""
@@ -14,14 +25,6 @@ def status():
 @app_views.route('/stats', strict_slashes=False)
 def num_objects():
     """Returns the number of objects by type"""
-    clsDict = {
-        "Amenity": "amenities",
-        "City": "cities",
-        "Place": "places",
-        "Review": "reviews",
-        "State": "states",
-        "User": "users"
-    }
     newDict = {}
     for k, v in clsDict.items():
         newDict[k] = storage.count(v)
