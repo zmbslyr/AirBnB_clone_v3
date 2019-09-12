@@ -74,5 +74,12 @@ class FileStorage:
         return self.__objects.get(cls + "." + id)
 
     def count(self, cls=None):
-        """Method to count all objects by optional cls"""
-        return len(self.all(cls))
+        """Method to get count of objects with optional class filter"""
+        if cls is None:
+            return (len(self.all()))
+        count = 0
+        classList = self.all(cls)
+        for thing in classList.values():
+            if thing.__class__.__name__ == cls:
+                count = count + 1
+        return count
