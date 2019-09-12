@@ -90,7 +90,7 @@ class DBStorage:
             return (len(self.all()))
         count = 0
         classList = self.all(cls)
-        for thing in cls_list.values():
+        for thing in classList.values():
             if thing.__class__.__name__ == cls:
                 count = count + 1
         return count
