@@ -24,7 +24,7 @@ def status():
 def num_objects():
     """Returns the number of objects by type"""
     newDict = {}
-    for v, k in clsDict.items():
+    for k, v in clsDict.items():
         newDict[v] = storage.count(k)
     return jsonify(newDict)
 
