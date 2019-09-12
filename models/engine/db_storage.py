@@ -79,6 +79,10 @@ class DBStorage:
         """Method to get an object"""
         if classes.get(cls) is None:
             return None
+        for obj in self.__session.query(classes.get(cls)).filter(
+                classes.get(cls).id == id):
+            return obj
+        return None
 
     def count(self, cls=None):
         """Method to get count of objects with optional class filter"""
