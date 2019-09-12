@@ -5,13 +5,13 @@ from flask import jsonify
 import models
 
 
-@app_views.route("/status")
+@app_views.route("/status", strict_slashes=False)
 def status():
     """Returns a JSON status"""
     return jsonify(status="OK")
 
 
-@app_views.route("/stats")
+@app_views.route("/stats", strict_slashes=False)
 def num_objects():
     """Returns the number of objects by type"""
     clsDict = {
