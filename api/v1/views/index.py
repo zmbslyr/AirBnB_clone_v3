@@ -8,7 +8,7 @@ import models
 @app_views.route("/status", strict_slashes=False)
 def status():
     """Returns a JSON status"""
-    return jsonify(status="OK")
+    return jsonify({"status": "OK"})
 
 
 @app_views.route("/stats", strict_slashes=False)
@@ -24,5 +24,5 @@ def num_objects():
     }
     newDict = {}
     for k, v in clsDict.items():
-        newDict[v] = models.storage.count(k)
+        newDict[k] = models.storage.count(v)
     return jsonify(newDict)
