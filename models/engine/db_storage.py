@@ -86,7 +86,7 @@ class DBStorage:
 
     def count(self, cls=None):
         """Method to get count of objects with optional class filter"""
-         if cls is None:
+        if cls is None:
             return (len(self.all()))
         count = 0
         classList = self.all(cls)
