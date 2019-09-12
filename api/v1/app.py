@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module to create flask app"""
 from models import storage
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, Blueprint
 from api.v1.views import app_views
 import os
 
@@ -24,5 +24,4 @@ def not_found(error):
 if __name__ == "__main__":
     app.run(
         host=os.getenv("HBNB_API_HOST", "0.0.0.0"),
-        port=int(os.getenv("HBNB_SPI_PORT", "5000")),
-        threaded=True)
+        port=int(os.getenv("HBNB_SPI_PORT", "5000")))

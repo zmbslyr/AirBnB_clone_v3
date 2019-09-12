@@ -2,7 +2,7 @@
 """Module to create a flask route"""
 
 from api.v1.views import app_views
-from flask import abort, jsonify, make_response, request
+from flask import abort, jsonify, make_response, request, Blueprint
 from models import storage
 from models.state import State
 
