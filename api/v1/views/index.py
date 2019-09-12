@@ -2,16 +2,16 @@
 """Module to create a flask route"""
 from api.v1.views import app_views
 from flask import jsonify, Flask, Blueprint
-import models
+from models import storage
 
 
-@app_views.route("/status", strict_slashes=False)
+@app_views.route('/status', strict_slashes=False)
 def status():
     """Returns a JSON status"""
     return jsonify({"status": "OK"})
 
 
-@app_views.route("/stats", strict_slashes=False)
+@app_views.route('/stats', strict_slashes=False)
 def num_objects():
     """Returns the number of objects by type"""
     clsDict = {
@@ -24,5 +24,5 @@ def num_objects():
     }
     newDict = {}
     for k, v in clsDict.items():
-        newDict[k] = models.storage.count(v)
+        newDict[k] = storage.count(v)
     return jsonify(newDict)
