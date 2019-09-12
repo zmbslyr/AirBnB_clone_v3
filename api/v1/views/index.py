@@ -4,15 +4,13 @@ from api.v1.views import app_views
 from flask import jsonify, Flask, Blueprint
 from models import storage
 
-
-
 clsDict = {
-	"Amenity": "amenities",
-	"City": "cities",
-	"Place": "places",
-	"Review": "reviews",
-	"State": "states",
-	"User": "users"
+    "Amenity": "amenities",
+    "City": "cities",
+    "Place": "places",
+    "Review": "reviews",
+    "State": "states",
+    "User": "users"
 }
 
 
