@@ -26,3 +26,7 @@ def num_objects():
     for k, v in clsDict.items():
         newDict[k] = storage.count(v)
     return jsonify(newDict)
+
+
+if __name__ == "__main__":
+	pass
