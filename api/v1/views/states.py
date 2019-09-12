@@ -16,7 +16,8 @@ def statesGetter():
     return jsonify(Allstate)
 
 
-@app_views.route('/states/<string:state_id>', methods=['GET'])
+@app_views.route('/states/<string:state_id>', methods=['GET'],
+                 strict_slashes=False)
 def stateGetter(state_id):
     """View a specific state"""
     state = storage.get("State", state_id)
@@ -25,7 +26,19 @@ def stateGetter(state_id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states/', methods=['POST'])
+@app_views.route('/states/<string:state_id>', methods=['DELETE'],
+                 strict_slashes=False)
+def stateDeleter(state_id):
+    """delete a state"""
+    delete_state = storage.get("State", state_id)
+    if delete_state is None:
+        abort(404)
+    delete_state.delete()
+    storage.save()
+    return (jsonify({}))
+
+
+@app_views.route('/states/', methods=['POST'], strict_slashes=False)
 def statePoster():
     """creates a new state"""
     if not request.get_json():
@@ -37,7 +50,8 @@ def statePoster():
     return make_response(jsonify(new_state.to_dict()), 201)
 
 
-@app_views.route('/states/<string:state_id>', methods=['PUT'])
+@app_views.route('/states/<string:state_id>', methods=['PUT'],
+                 strict_slashes=False)
 def stateUpdater(state_id):
     """Update created state"""
     state_update = storage.get("State", state_id)
