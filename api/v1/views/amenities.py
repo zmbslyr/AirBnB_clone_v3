@@ -12,7 +12,7 @@ def amenityGetter():
     """get all amenities"""
     Alist = []
     for thing in models.storage.all("Amenity").values():
-        Alist.append(amenity.to_dict())
+        Alist.append(thing.to_dict())
     return jsonify(Alist)
 
 
@@ -35,7 +35,7 @@ def amenityPoster():
         return make_response(jsonify({"error": "Missing name"}), 400)
     new_amenity = Amenity(**request.get_json())
     new_amenity.save()
-    return make_response(jsonify(amenityPost.to_dict()), 201)
+    return make_response(jsonify(new_amenity.to_dict()), 201)
 
 
 @app_views.route('/amenities/<string:amenity_id>', methods=['DELETE'],
