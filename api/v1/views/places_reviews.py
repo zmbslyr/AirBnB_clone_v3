@@ -76,7 +76,7 @@ def reviewUpdater(review_id):
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     for key, value in request.get_json().items():
         if key not in ["id", "created_at",
-                        "updated_at", "place_id", "user_id']:
+                       "updated_at", "place_id", "user_id']:
             setattr(update, key, value)
     update.save()
     return jsonify(update.to_dict())
