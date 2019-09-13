@@ -42,7 +42,7 @@ def cityPost(state_id):
                  strict_slashes=False)
 def cityGet(city_id):
     """Get a city from id"""
-    grab = storage.get("City", city_id)
+    grab = models.storage.get("City", city_id)
     if grab is None:
         abort(404)
     return jsonify(grab.to_dict())
