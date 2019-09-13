@@ -45,7 +45,7 @@ def userPost():
 def userKill(user_id):
     """Deletes a user by their id"""
     kill = models.storage.get("User", user_id)
-    if Kill is None:
+    if kill is None:
         abort(404)
     kill.delete()
     models.storage.save()
