@@ -68,7 +68,7 @@ def cityPut(city_id):
                  strict_slashes=False)
 def cityDelete(city_id):
     """Delete a city based on id"""
-    Delete = storage.get("City", city_id)
+    Delete = models.storage.get("City", city_id)
     if Delete is None:
         abort(404)
     Delete.delete()
