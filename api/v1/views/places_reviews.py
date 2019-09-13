@@ -25,7 +25,7 @@ def reviewGetter(place_id):
                  strict_slashes=False)
 def reviewSelector(review_id):
     """Gets a review by id"""
-    selector = models.storage.get("Review", review_id)
+    select = models.storage.get("Review", review_id)
     if select is None:
         abort(404)
     return jsonify(select.to_dict())
