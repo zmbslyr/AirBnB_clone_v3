@@ -34,7 +34,7 @@ def placeSelector(place_id):
 
 @app_views.route('/cities/<string:city_id>/places', methods=['POST'],
                  strict_slashes=False)
-def postPlace(city_id):
+def placeMake(city_id):
     """Make a new place"""
     City = models.storage.get("City", city_id)
     if City is None:
@@ -57,7 +57,7 @@ def postPlace(city_id):
 
 @app_views.route('/places/<string:place_id>', methods=['DELETE'],
                  strict_slashes=False)
-def deletePlace(place_id):
+def placeDelete(place_id):
     """Delete a place by id"""
     kill = models.storage.get("Place", place_id)
     if kill is None:
@@ -69,7 +69,7 @@ def deletePlace(place_id):
 
 @app_views.route('/places/<string:place_id>', methods=['PUT'],
                  strict_slashes=False)
-def putPlace(place_id):
+def placeUpdate(place_id):
     """Update a place by id"""
     update = models.storage.get("Place", place_id)
     if update is None:
@@ -81,4 +81,4 @@ def putPlace(place_id):
                        "updated_at"]:
             setattr(update, key, value)
     update.save()
-    return jsonify(update.to_dict())
+    return make_response(jsonify(update.to_dict()), 200)
